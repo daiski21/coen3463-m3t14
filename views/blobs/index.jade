@@ -1,0 +1,100 @@
+extends ../layout
+
+block content
+  #wrapper
+      nav.navbar.navbar-default.navbar-cls-top(role='navigation', style='margin-bottom: 0')
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.sidebar-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/') WORK MO TO!
+        .header-right
+          a.btn.btn-info(href='message-task.html', title='New Message')
+            b 30 
+            i.fa.fa-envelope-o.fa-2x
+          a.btn.btn-primary(href='message-task.html', title='New Task')
+            b 40 
+            i.fa.fa-bars.fa-2x
+          a.btn.btn-danger(href='login.html', title='Logout')
+            i.fa.fa-exclamation-circle.fa-2x
+      // /. NAV TOP
+      nav.navbar-default.navbar-side(role='navigation')
+        .sidebar-collapse
+          ul#main-menu.nav
+            li
+              a(href='/')
+                i.fa.fa-dashboard
+                | Dashboard
+            li
+              a.active-menu-top(href='#')
+                i.fa.fa-yelp
+                | Pages 
+                span.fa.arrow
+              ul.nav.nav-second-level.collapse.in
+                li
+                  a.active-menu(href='/blobs/')
+                    i.fa.fa-coffee
+                    | Data Table
+                li
+                  a(href='/blobs/new')
+                    i.fa.fa-flash
+                    | Add Data
+      // /. NAV SIDE
+      #page-wrapper
+        #page-inner
+          .row
+            .col-md-12
+              h1.page-head-line Data Table
+              h1.page-subhead-line 
+          .row
+            .col-md-12
+              .main-box.mb-dull
+                .table-responsive
+                  table.table.table-striped.table-bordered.table-hover
+                    thead
+                      tr
+                        th Workout Name
+                        th Main Muscle
+                        th Detailed Muscle
+                        th Other Muscle
+                        th Type
+                        th Mechanics
+                        th Equipment
+                        th Difficulty
+                        th Date Modified
+                        th Edit
+                        th Remove
+                    tbody
+                      each blob, i in blobs
+                        tr
+                          td 
+                            a(href='/blobs/' + blob._id ) #{blob.name}
+                          td #{blob.MMG}
+                          td #{blob.DMG}
+                          td #{blob.OMG}
+                          td #{blob.type}
+                          td #{blob.mechanics}
+                          td #{blob.equipment}
+                          td #{blob.difficulty}
+                          td #{blob.date}
+                          td 
+                            a(href='/blobs/#{blob._id}/edit') Edit
+                          td
+                            form(action='/blobs/#{blob._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
+                              input(type='hidden',value='DELETE',name='_method')
+                              button(type='submit',style='width:55px;height:25px;', position= 'center').
+                                  Delete
+          
+          // /. ROW
+        // /. PAGE INNER
+      // /. PAGE WRAPPER
+    // /. WRAPPER
+
+  
+
+ 
+  
+
+ 

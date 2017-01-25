@@ -1,0 +1,119 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Admin
+    // BOOTSTRAP STYLES
+    link(href='../../stylesheets/bootstrap.css', rel='stylesheet', type='text/css')
+    // FONTAWESOME STYLES
+    link(href='../../stylesheets/font-awesome.css', rel='stylesheet', type='text/css')
+    // CUSTOM BASIC STYLES
+    link(href='../../stylesheets/basic.css', rel='stylesheet', type='text/css')
+    // CUSTOM MAIN STYLES
+    link(href='../../stylesheets/custom.css', rel='stylesheet', type='text/css')
+    // GOOGLE FONTS
+    link(href='http://fonts.googleapis.com/css?family=Open+Sans', rel='stylesheet', type='text/css')
+  body
+
+ 
+  #wrapper
+      nav.navbar.navbar-default.navbar-cls-top(role='navigation', style='margin-bottom: 0')
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.sidebar-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/') WORK MO TO!
+        .header-right
+          a.btn.btn-info(href='message-task.html', title='New Message')
+            b 30 
+            i.fa.fa-envelope-o.fa-2x
+          a.btn.btn-primary(href='message-task.html', title='New Task')
+            b 40 
+            i.fa.fa-bars.fa-2x
+          a.btn.btn-danger(href='login.html', title='Logout')
+            i.fa.fa-exclamation-circle.fa-2x
+      // /. NAV TOP
+      nav.navbar-default.navbar-side(role='navigation')
+        .sidebar-collapse
+          ul#main-menu.nav
+            li
+              a.active-menu-top(href='/')
+                i.fa.fa-dashboard
+                | Dashboard
+            li
+              a(href='#')
+                i.fa.fa-yelp
+                | Pages 
+                span.fa.arrow
+              ul.nav.nav-second-level.collapse
+                li
+                  a(href='/blobs/')
+                    i.fa.fa-coffee
+                    | Data Table
+                li
+                  a(href='/blobs/new')
+                    i.fa.fa-flash
+                    | Add Data
+      // /. NAV SIDE
+      #page-wrapper
+        #page-inner
+          .row
+            .col-md-12
+              h1.page-head-line Update/Delete
+              h1.page-subhead-line 
+          .row
+            .col-md-12
+              h1 Update Workout
+              form(method="POST", action="/blobs/#{blob._id}/edit")
+                P Name:
+                        input.form-control(type="text", placeholder="Name", value='#{blob.name}', name="workout_name")
+                P Image:
+                        input.form-control(type="text", placeholder="Image Link", value='#{blob.image}', name="image")
+                p Link:
+                        input.form-control(type="text", placeholder="Youtube Link", value='#{blob.link}', name="youtube_link")
+                p Steps:
+                        input.form-control(type="text", placeholder="Steps  (ex.: 1.) ... 2.) ...)", value='#{blob.steps}', name="steps")
+                P Main Muscle Group:
+                        input.form-control(type="text", placeholder="Main Muscle Group", value='#{blob.MMG}', name="MMG")  
+                P Detailed Muscle Group:
+                        input.form-control(type="text", placeholder="Detailed Muscle Group", value='#{blob.DMG}', name="DMG")
+                P Other Muscle Group:
+                        input.form-control(type="text", placeholder="Other Muscle Group", value='#{blob.OMG}', name="OMG")
+                P Type:
+                        input.form-control(type="text", placeholder="Type", value='#{blob.type}', name="typetype")
+                P Mechanics:
+                        input.form-control(type="text", placeholder="Mechanics", value='#{blob.mechanics}', name="mechanics")
+                P Equipment:
+                        input.form-control(type="text", placeholder="Equipment", value='#{blob.equipment}', name="equipment")
+                P Difficulty:
+                        input.form-control(type="text", placeholder="Difficulty", value='#{blob.difficulty}', name="difficulty")
+                P Date:
+                        input.form-control(type="text", placeholder="Date:mo/day/yr", value='#{blob.date}', name="date")       
+
+                p 
+                        input(type='hidden',value='PUT',name='_method')
+                button.btn.btn-primary(type="submit")
+                    i.fa.fa-paper-plane
+                    |  Update
+          
+          
+          // /. ROW
+        // /. PAGE INNER
+      // /. PAGE WRAPPER
+    // /. WRAPPER
+  #footer-sec
+    | © 2016 YourCompany | Design By : Skinny Genes
+  // /. FOOTER
+  // SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME
+  // JQUERY SCRIPTS
+  script(src='../../javascripts/jquery-1.10.2.js')
+  // BOOTSTRAP SCRIPTS
+  script(src='../../javascripts/bootstrap.js')
+  // METISMENU SCRIPTS
+  script(src='../../javascripts/jquery.metisMenu.js')
+  // CUSTOM SCRIPTS
+  script(src='../../javascripts/custom.js')
+
