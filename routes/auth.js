@@ -28,7 +28,7 @@ router.get('/login', function(req, res, next) {
 router.post('/login',
   passport.authenticate('local', { failureRedirect: '/login' }),
   function(req, res) {
-    res.redirect('/');
+    res.redirect('../blobs/');
   });
 
 router.all('/logout', function(req, res, next) {

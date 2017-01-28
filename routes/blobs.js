@@ -5,6 +5,7 @@ var express = require('express'),
     methodOverride = require('method-override');
 
 
+
 router.use(bodyParser.urlencoded({ extended: true }))
 router.use(methodOverride(function(req, res){
       if (req.body && typeof req.body === 'object' && '_method' in req.body) {
@@ -24,9 +25,10 @@ router.get('/', function(req, res, next) {
                   res.format({  
                     html: function(){
                         res.render('blobs/index', {
-                              title: 'All my Blobs',
+                              user: req.user,
+                              title: 'All my workouts',
                               "blobs" : blobs
-                          });
+                        });
                     },
                     json: function(){
                         res.json(blobs);

@@ -34,6 +34,10 @@
 .mb-pink {
     background-color:#FF2F71;
 }
+.mb-bluegreen {
+    background: url(../images/bicep1.jpg); 
+    color: black;
+}
     .main-box h5 {
         font-size:16px;
         font-weight:800;

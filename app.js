@@ -16,9 +16,8 @@ var db = require('./model/db'),
 
 var routes = require('./routes/index'),
     blobs = require('./routes/blobs'),
-    auth = require('./routes/auth');
-
-//var users = require('./routes/users');
+    auth = require('./routes/auth'),
+    users = require('./routes/users');
 
 var app = express();
 
