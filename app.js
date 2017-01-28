@@ -11,8 +11,8 @@ var session = require('express-session'),
     LocalStrategy = require('passport-local').Strategy;
 
 var db = require('./model/db'),
-    blob = require('./model/blobs'),
-    user = require('./model/user');
+    blob = require('./model/blobs');
+  
 
 var routes = require('./routes/index'),
     blobs = require('./routes/blobs'),
@@ -56,6 +56,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use('/', routes);
 app.use('/blobs', blobs);
 app.use('/auth', auth);
+
 //app.use('/users', users);
 
 // catch 404 and forward to error handler

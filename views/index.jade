@@ -76,7 +76,7 @@ html(lang='en')
             p Here are the list of Workouts
             a.btn.btn-default.btn-lg(href='/blobs/') Go to Workout
             if (user)
-              p You are logged in as #{user.username}
+              p You are logged in as #{User.username}
                 a(href="/auth/logout")  logout
             else
               p

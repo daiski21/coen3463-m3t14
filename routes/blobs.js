@@ -15,16 +15,8 @@ router.use(methodOverride(function(req, res){
 }))
 
 
-
-router.use(function(req, res, next) {
-if (!req.user) {
-    res.redirect('/auth/login')
-  }
-  next();
-});
-
-router.route('/')
-    .get(function(req, res, next) {
+router.get('/', function(req, res, next) {
+    if(req.user){   
         mongoose.model('workouts').find({}, function (err, blobs) {
               if (err) {
                   return console.error(err);
@@ -42,9 +34,13 @@ router.route('/')
                 });
               }     
         });
-    })
+    }
+    else{
+      res.redirect('/auth/login')
+    }    
+});
 
-    .post(function(req, res) {
+router.post('/', function(req, res) {
         var name = req.body.workout_name;
         var link = req.body.youtube_link;
         var steps = req.body.steps;
@@ -89,7 +85,7 @@ router.route('/')
                 });
               }
         })
-    });
+});
 
 
 router.get('/new', function(req, res) {
