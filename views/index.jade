@@ -75,6 +75,14 @@ html(lang='en')
             h2 Workouts
             p Here are the list of Workouts
             a.btn.btn-default.btn-lg(href='/blobs/') Go to Workout
+            if (user)
+              p You are logged in as #{user.username}
+                a(href="/auth/logout")  logout
+            else
+              p
+                a(href="/auth/login") Please login
+                |  or
+                a(href="/auth/register")  register
     // Contact Section
     section#contact.container.content-section.text-center
       .row

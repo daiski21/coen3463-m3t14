@@ -15,6 +15,14 @@ router.use(methodOverride(function(req, res){
 }))
 
 
+
+router.use(function(req, res, next) {
+if (!req.user) {
+    res.redirect('/auth/login')
+  }
+  next();
+});
+
 router.route('/')
     .get(function(req, res, next) {
         mongoose.model('workouts').find({}, function (err, blobs) {
