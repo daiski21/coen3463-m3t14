@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var blobSchema = new mongoose.Schema({  
   name: {type: String, required: true},
   link: String,
-  steps: {type: String, requirequired: true},
+  steps: {type: String, required: true},
   MMG: String,
   DMG: String,
   OMG: String,

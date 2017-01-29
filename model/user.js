@@ -9,6 +9,7 @@ var User = new Schema
 		lname: String,
 		username: String,
 		email: String,
+		password: String,
 	}
 	//{
 //		collection: 'User'

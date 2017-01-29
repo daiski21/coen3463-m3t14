@@ -73,7 +73,7 @@ router.post('/', function(req, res) {
 
         }, function (err, blob) {
               if (err) {
-                  res.send("There was a problem adding the information to the database.");
+                  res.send("You must fill up the name and steps input boxes. Thank you.");
               } else {
                   console.log('POST creating new blob: ' + blob);
                   res.format({   
