@@ -1,0 +1,43 @@
+extends layout
+
+block content
+    .container
+        br
+        br
+        .main-box.mb-bluegreen
+            .row 
+                br
+                br
+                br
+     
+                .col-md-4
+                .col-md-4
+                     h1 Register
+                     form(role="form", action="/auth/register", method="post")
+                          .form-group
+                              label(for="fname") First Name
+                              input#fname.form-control(name="fname", type="text")
+                          .form-group
+                              label(for="lname") Last Name
+                              input#lname.form-control(name="lname", type="text")
+                          .form-group
+                              label(for="username") Username
+                              input#username.form-control(name="username", type="text")
+                          .form-group
+                              label(for="password") Password
+                              input#password.form-control(name="password", type="password")
+                          .form-group
+                              label(for="email") Email
+                              input#email.form-control(name="emal", type="email")
+                          p
+                              a.btn.btn-link(href="/") Cancel
+                              button.btn.btn-default(type="submit", value="Register") Register
+
+                .row
+                .col-md-4
+                .col-md-4
+                    br
+                    br
+                    br
+                    h4 "To enjoy the glow of good health, you must exercise." -Gene Tunney
+
