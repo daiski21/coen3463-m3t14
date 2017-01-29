@@ -21,14 +21,19 @@ router.route('/register')
   })
 
 router.get('/login', function(req, res, next) {
-  res.render('login', {user: req.user});
+  if(req.user){
+    res.redirect('/');
+  }
+  else{
+    res.render('login', {user: req.user});
+  }
 });
 
 
 router.post('/login',
   passport.authenticate('local', { failureRedirect: '/login' }),
   function(req, res) {
-    res.redirect('../blobs/');
+    res.redirect('/blobs');
   });
 
 router.all('/logout', function(req, res, next) {
