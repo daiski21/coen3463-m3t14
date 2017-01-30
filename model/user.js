@@ -29,7 +29,7 @@ var User = new Schema
 		username: {type: String, required: true, validate: usernameValidator},
 		email: {type: String, required: true, validate: emailValidator},
 		password: String,
-	},
+	}//,
 	//{
 	//	collection: 'User'
 	//}
