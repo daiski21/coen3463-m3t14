@@ -91,7 +91,7 @@ router.post('/', function(req, res) {
 
 
 router.get('/new', function(req, res) {
-    res.render('blobs/new', { title: 'Add New Blob' });
+    res.render('blobs/new', { user: req.user, title: 'Add New Blob' });
 });
 
 
@@ -150,6 +150,7 @@ router.route('/:id/edit')
               res.format({
                   html: function(){
                          res.render('blobs/edit', {
+                            user: req.user,
                             title: 'Blob' + blob._id,
                             "blob" : blob
                         });
