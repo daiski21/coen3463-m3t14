@@ -30,9 +30,9 @@ var User = new Schema
 		email: {type: String, required: true, validate: emailValidator},
 		password: String,
 	},
-	{
-		collection: 'User'
-	}
+	//{
+	//	collection: 'User'
+	//}
 );
 
 User.plugin(passportLocalMongoose);
