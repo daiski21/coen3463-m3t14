@@ -11,14 +11,8 @@ block content
             span.icon-bar
           a.navbar-brand(href='/') WORK MO TO!
         .header-right
-          a.btn.btn-info(href='message-task.html', title='New Message')
-            b 30 
-            i.fa.fa-envelope-o.fa-2x
-          a.btn.btn-primary(href='message-task.html', title='New Task')
-            b 40 
-            i.fa.fa-bars.fa-2x
-          a.btn.btn-danger(href='login.html', title='Logout')
-            i.fa.fa-exclamation-circle.fa-2x
+              p Welcome #{user.username} ::
+                    a(href="/auth/logout")  logout
       // /. NAV TOP
       nav.navbar-default.navbar-side(role='navigation')
         .sidebar-collapse
