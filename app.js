@@ -11,7 +11,8 @@ var session = require('express-session'),
     LocalStrategy = require('passport-local').Strategy;
 
 var db = require('./model/db'),
-    blob = require('./model/blobs');
+    blob = require('./model/blobs'),
+    user = require('./model/user');
   
 
 var routes = require('./routes/index'),
