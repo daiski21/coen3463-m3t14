@@ -32,7 +32,7 @@ router.get('/login', function(req, res, next) {
 
 
 router.post('/login',
-  passport.authenticate('local', { failureRedirect: '/' }),
+  passport.authenticate('local', { failureRedirect: '/auth/register' }),
   function(req, res) {
     res.redirect('/blobs');
   });
