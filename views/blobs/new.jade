@@ -31,7 +31,7 @@ block content
                   a(href='/blobs/')
                     i.fa.fa-coffee
                     | Data Table
-                li
+                li 
                   a.active-menu(href='/blobs/new')
                     i.fa.fa-flash
                     | Add Data
@@ -48,29 +48,31 @@ block content
               .main-box.mb-red
                 h1 New Workout
                 form(method="POST", action="/blobs/")
-                  p Name:
+                  p Name 
+                    span.req *
                     input.form-control(type="text", placeholder="Name", name="workout_name")
-                  P Image Link:
+                  P Image Link
                     input.form-control(type="text", placeholder="Image Link", name="image")  
-                  p Youtube Link:
+                  p Youtube Link
                     input.form-control(type="text", placeholder="Youtube Link", name="youtube_link")
-                  p Steps:
+                  p Steps
+                    span.req *
                     input.form-control(type="text", placeholder="Steps (ex.: 1.) ... 2.) ...)", name="steps")
-                  P Main Muscle Group:
+                  P Main Muscle Group
                     input.form-control(type="text", placeholder="Main Muscle Group", name="MMG")  
-                  P Detailed Muscle Group:
+                  P Detailed Muscle Group
                     input.form-control(type="text", placeholder="Detailed Muscle Group", name="DMG")
-                  P Other Muscle Group:
+                  P Other Muscle Group
                     input.form-control(type="text", placeholder="Other Muscle Group", name="OMG")
-                  P Type:
+                  P Type
                     input.form-control(type="text", placeholder="Type", name="typetype")
-                  P Mechanics:
+                  P Mechanics
                     input.form-control(type="text", placeholder="Mechanics", name="mechanics")
-                  P Equipment:
+                  P Equipment
                     input.form-control(type="text", placeholder="Equipment", name="equipment")
-                  P Difficulty:
+                  P Difficulty
                     input.form-control(type="text", placeholder="Difficulty", name="difficulty") 
-                  P Date:
+                  P Date
                     input.form-control(type="text", placeholder="Date Modified:mo/day/yr", name="date")          
                   button.btn.btn-primary(type="submit")
                       i.fa.fa-paper-plane
