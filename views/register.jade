@@ -9,17 +9,23 @@ block content
                 br
                 br
                 br
-
-                .col-md-4
+                .col-md-4       
                 .col-md-4
                      h1 Register
+                     if (alertMessage.length > 0)
+                      .form-alert
+                        h4.alertMesage
+                            | #{alertMessage}
                      form(role="form", action="/auth/register", method="post")
                           .form-group
                               label(for="fname")
                                 | First Name
+                                span.req *
                               input#fname.form-control(name="fname", placeholder="First Name" type="text")
                           .form-group
-                              label(for="lname") Last Name
+                              label(for="lname") 
+                                | Last Name
+                                span.req *
                               input#lname.form-control(name="lname", placeholder="Last Name", type="text")
                           .form-group
                               label(for="username") 
@@ -33,7 +39,9 @@ block content
                                 span.req *
                               input#email.form-control(name="email", placeholder="Email Address", type="text")
                           .form-group
-                              label(for="password") Password
+                              label(for="password") 
+                                | Password
+                                span.req *
                               input#password.form-control(name="password", placeholder="Password",type="password")
                           p
                               a.btn.btn-link(href="/") Cancel

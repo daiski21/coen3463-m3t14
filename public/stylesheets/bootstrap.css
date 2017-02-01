@@ -1099,6 +1099,11 @@ h6,
 .h6 {
   font-size: 12px;
 }
+h4.alertMesage{
+ color: maroon;
+
+
+}
 p {
   margin: 0 0 10px;
 }
@@ -2424,6 +2429,13 @@ input[type="month"].input-lg {
 }
 .form-group {
   margin-bottom: 15px;
+}
+.form-alert{
+  background-color: pink;
+  border-radius: 5px;
+  padding-left: 45px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .radio,
 .checkbox {

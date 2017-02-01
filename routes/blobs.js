@@ -27,7 +27,8 @@ router.get('/', function(req, res, next) {
                         res.render('blobs/index', {
                               user: req.user,
                               title: 'All my workouts',
-                              "blobs" : blobs
+                              "blobs" : blobs,
+                              alertMessage: req.flash('alertMessage')
                         });
                     },
                     json: function(){
@@ -73,7 +74,9 @@ router.post('/', function(req, res) {
 
         }, function (err, blob) {
               if (err) {
-                  res.send("You must fill up the name and steps input boxes. Thank you.");
+                  req.flash('alertMessage', 'You must fill up the name and steps input boxes. Thank you.');
+                  res.redirect('/blobs/new');
+                  //res.send("/blobs");
               } else {
                   console.log('POST creating new blob: ' + blob);
                   res.format({   
@@ -91,7 +94,12 @@ router.post('/', function(req, res) {
 
 
 router.get('/new', function(req, res) {
-    res.render('blobs/new', { user: req.user, title: 'Add New Blob' });
+  if(req.user){  
+    res.render('blobs/new', { user: req.user, title: 'Add New Blob' , alertMessage: req.flash('alertMessage')});
+  }
+  else{
+    res.redirect('/auth/login')
+  } 
 });
 
 

@@ -8,11 +8,14 @@ block content
             .row 
                 br
                 br
-                br
-     
+                br    
                 .col-md-4
                 .col-md-4
                     h1 Please login
+                    if (alertMessage.length > 0)
+                      .form-alert
+                        h4.alertMesage
+                            | #{alertMessage}
                     form(role="form", action="/auth/login", method="post")
                         .form-group
                             label(for="username") Username 

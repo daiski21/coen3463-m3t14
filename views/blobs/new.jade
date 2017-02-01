@@ -47,6 +47,10 @@ block content
             .col-md-8
               .main-box.mb-red
                 h1 New Workout
+                if (alertMessage.length > 0)
+                  .form-alert
+                    h4.alertMesage
+                        | #{alertMessage}
                 form(method="POST", action="/blobs/")
                   p Name 
                     span.req *

@@ -3,7 +3,8 @@ var express = require('express'),
     favicon = require('serve-favicon'),
     logger = require('morgan'),
     cookieParser = require('cookie-parser'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    flash = require('connect-flash');
 
 var session = require('express-session'),
     mongoose = require('mongoose'),
@@ -41,6 +42,8 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(flash());
 
 var User = require('./model/user');
 passport.use(User.createStrategy());
