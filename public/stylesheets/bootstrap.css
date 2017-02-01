@@ -2433,9 +2433,8 @@ input[type="month"].input-lg {
 .form-alert{
   background-color: pink;
   border-radius: 5px;
-  padding-left: 45px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 5px;
+  text-align: center;
 }
 .radio,
 .checkbox {
