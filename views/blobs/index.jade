@@ -63,26 +63,8 @@ block content
                         th Date Modified
                         th Edit
                         th Remove
-                    tbody
-                      each blob, i in blobs
-                        tr
-                          td 
-                            a(href='/blobs/' + blob._id ) #{blob.name}
-                          td #{blob.MMG}
-                          td #{blob.DMG}
-                          td #{blob.OMG}
-                          td #{blob.type}
-                          td #{blob.mechanics}
-                          td #{blob.equipment}
-                          td #{blob.difficulty}
-                          td #{blob.date}
-                          td 
-                            a(href='/blobs/#{blob._id}/edit') Edit
-                          td
-                            form(action='/blobs/#{blob._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
-                              input(type='hidden',value='DELETE',name='_method')
-                              button(type='submit',style='width:55px;height:25px;', position= 'center').
-                                  Delete
+                    tbody#table-body
+
           
           // /. ROW
         // /. PAGE INNER

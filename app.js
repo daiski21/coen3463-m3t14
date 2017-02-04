@@ -11,9 +11,12 @@ var session = require('express-session'),
     passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy;
 
+const methodOverride = require('method-override');
+const restify = require('express-restify-mongoose');
+const router = express.Router();
+
 var db = require('./model/db'),
-    blob = require('./model/blobs'),
-    user = require('./model/user');
+    workouts = require('./model/blobs');
   
 
 var routes = require('./routes/index'),
@@ -33,6 +36,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     secret: 'secret',
@@ -55,6 +59,9 @@ passport.deserializeUser(User.deserializeUser());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+
+restify.serve(router, workouts);
+app.use(router);
 
 app.use('/', routes);
 app.use('/blobs', blobs);

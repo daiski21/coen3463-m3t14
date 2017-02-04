@@ -1,4 +1,5 @@
-var mongoose = require('mongoose');  
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
 var blobSchema = new mongoose.Schema({  
   name: {type: String, required: true},
   link: String,
@@ -13,4 +14,4 @@ var blobSchema = new mongoose.Schema({
   image: String,
   date: String
 });
-mongoose.model('workouts', blobSchema);
+module.exports = mongoose.model('workouts', blobSchema);
