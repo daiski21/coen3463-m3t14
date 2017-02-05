@@ -20,12 +20,12 @@ $('#delete').on('click', function(e){
 
 if (window.location.pathname === '/blobs/') {
 
-  fetch('api/v1/workouts').then(function(res) {
+  fetch('../api/v1/workouts').then(function(res) {
     res.json().then(function(workouts) {	
       console.log('workouts', workouts);
       var tbody = document.getElementById('table-body');
       workouts.forEach(function(workouts) {
-        tbody.insertAdjacentHTML('beforeend', '<tr> <td> <a href="/blobs/' + blob._id + '">'+ blob.name + '</a></td> );
+        tbody.insertAdjacentHTML('beforeend', '<tr><td><a href="/blobs/' + workouts._id + '">' + workouts.name + '</td><td>' + workouts.MMG + ' </td><td>' + workouts.DMG + ' </td><td>' + workouts.OMG + ' </td><td>' + workouts.type + ' </td><td>' + workouts.mechanics + ' </td><td>' + workouts.equipment + ' </td><td>' + workouts.difficulty + ' </td><td>' + workouts.date + ' </td><td><a href="/blobs/' + workouts._id + '/edit">' + 'Edit' + '</td></tr>' );
 
       });
     })

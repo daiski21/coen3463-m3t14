@@ -2,6 +2,7 @@ var express = require('express'),
     router = express.Router(),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
+    workouts = require('../model/blobs'),
     methodOverride = require('method-override');
 
 
