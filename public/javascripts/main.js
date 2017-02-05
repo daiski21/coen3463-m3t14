@@ -25,7 +25,13 @@ if (window.location.pathname === '/blobs/') {
       console.log('workouts', workouts);
       var tbody = document.getElementById('table-body');
       workouts.forEach(function(workouts) {
-        tbody.insertAdjacentHTML('beforeend', '<tr><td><a href="/blobs/' + workouts._id + '">' + workouts.name + '</td><td>' + workouts.MMG + ' </td><td>' + workouts.DMG + ' </td><td>' + workouts.OMG + ' </td><td>' + workouts.type + ' </td><td>' + workouts.mechanics + ' </td><td>' + workouts.equipment + ' </td><td>' + workouts.difficulty + ' </td><td>' + workouts.date + ' </td><td><a href="/blobs/' + workouts._id + '/edit">' + 'Edit' + '</td></tr>' );
+        tbody.insertAdjacentHTML('beforeend', '<tr><td><a href="/blobs/' + workouts._id + '">'
+         + workouts.name + '</td><td>' + workouts.MMG + ' </td><td>' 
+         + workouts.DMG + ' </td><td>' + workouts.OMG + ' </td><td>' 
+         + workouts.type + ' </td><td>' + workouts.mechanics + ' </td><td>' 
+         + workouts.equipment + ' </td><td>' + workouts.difficulty + ' </td><td>' 
+         + workouts.date + ' </td><td><a href="/blobs/' 
+         + workouts._id + '/edit">' + 'Edit' + '</td><td><a id="delete" href="#" class="btn btn-default">Delete</a></td></tr>' );
 
       });
     })

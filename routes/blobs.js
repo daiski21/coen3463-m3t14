@@ -83,7 +83,7 @@ router.post('/', function(req, res) {
                   res.format({   
                     html: function(){
                         res.location("blobs");
-                        res.redirect("/blobs");
+                        res.redirect("/blobs/");
                     },
                     json: function(){
                         res.json(blob);
@@ -212,7 +212,7 @@ router.route('/:id/edit')
                    
                     res.format({
                         html: function(){
-                             res.redirect("/blobs/" + blob._id);
+                             res.redirect("/blobs/");
                        },
                  
                       json: function(){
@@ -236,7 +236,7 @@ router.route('/:id/edit')
                       console.log('DELETE removing ID: ' + blob._id);
                       res.format({
                             html: function(){
-                                 res.redirect("/blobs");
+                                 res.redirect("/blobs/");
                            },
                           json: function(){
                                  res.json({message : 'deleted',
