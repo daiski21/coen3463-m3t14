@@ -36,7 +36,14 @@ router.route('/')
         });
     })
 
-    .post(function(req, res) {
+    
+
+
+router.get('/new', function(req, res) {
+    res.render('blobs/new', { title: 'Add New Blob' });
+});
+
+router.post('/new', function(req, res) {
         var name = req.body.workout_name;
         var link = req.body.youtube_link;
         var steps = req.body.steps;
@@ -82,12 +89,6 @@ router.route('/')
               }
         })
     });
-
-
-router.get('/new', function(req, res) {
-    res.render('blobs/new', { title: 'Add New Blob' });
-});
-
 
 router.param('id', function(req, res, next, id) {
     mongoose.model('workouts').findById(id, function (err, blob) {
