@@ -7,7 +7,7 @@ $('#delete').on('click', function(e){
     var $thisInput = $(this);
 
     $.ajax({
-      url:'/contacts/'+val,
+      url:'/blobs/'+val,
       type:'DELETE'
     }).done(function(){
       $thisInput.parents('tr').remove();
@@ -20,7 +20,7 @@ $('#delete').on('click', function(e){
 
 if (window.location.pathname === '/blobs/') {
 
-  fetch('../api/v1/workouts').then(function(res) {
+  fetch('../api/v1/workouts?sort=date').then(function(res) {
     res.json().then(function(workouts) {	
       console.log('workouts', workouts);
       var tbody = document.getElementById('table-body');
@@ -31,10 +31,22 @@ if (window.location.pathname === '/blobs/') {
          + workouts.type + ' </td><td>' + workouts.mechanics + ' </td><td>' 
          + workouts.equipment + ' </td><td>' + workouts.difficulty + ' </td><td>' 
          + workouts.date + ' </td><td><a href="/blobs/' 
-         + workouts._id + '/edit">' + 'Edit' + '</td><td><a id="delete" href="#" class="btn btn-default">Delete</a></td></tr>' );
+         + workouts._id + '/edit">' + 'Edit' + '</td><td><form action= "/blobs/' + workouts._id + '/edit" method="post" enctype="application/x-www-form-urlencoded"><input type="hidden" value="DELETE" name="_method"><button type="submit" style="width:55px;height:25px;" position= "center"> Delete</form></td></tr>' );
 
       });
     })
   });
+
+  fetch('../api/v1/workouts/count').then(function(res){
+		res.json().then(function(count){
+			console.log('count', count)
+			var totalCount = document.getElementById('totalCount');
+			setTimeout(function() {
+				totalCount.innerHTML = count.count;
+			}, 500)
+			
+		});
+	});
+
 
 }

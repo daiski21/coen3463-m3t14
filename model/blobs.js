@@ -12,6 +12,7 @@ var blobSchema = new mongoose.Schema({
   equipment: String,
   difficulty: String,
   image: String,
-  date: String
+  date: String,
+  updated: String,
 });
 module.exports = mongoose.model('workouts', blobSchema);

@@ -5,6 +5,10 @@ var express = require('express'),
     workouts = require('../model/blobs'),
     methodOverride = require('method-override');
 
+var date = new Date();
+var getDate = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+var workouts = require('../model/blobs');
+
 
 
 router.use(bodyParser.urlencoded({ extended: true }))
@@ -19,7 +23,8 @@ router.use(methodOverride(function(req, res){
 
 router.get('/', function(req, res, next) {
     if(req.user){   
-        mongoose.model('workouts').find({}, function (err, blobs) {
+        workouts.find().sort({date: 'descending'}).exec(function(err, blobs){
+          mongoose.model('workouts').find({}, function (err, blobs) {
               if (err) {
                   return console.error(err);
               } else {  
@@ -37,7 +42,8 @@ router.get('/', function(req, res, next) {
                     }
                 });
               }     
-        });
+         });
+        })  
     }
     else{
       res.redirect('/auth/login')
@@ -56,7 +62,8 @@ router.post('/', function(req, res) {
         var equipment = req.body.equipment;
         var difficulty = req.body.difficulty;
         var image = req.body.image;
-        var date = req.body.date;
+        var date = getDate;
+        var updated = getDate;
 
 
         mongoose.model('workouts').create({
@@ -71,7 +78,7 @@ router.post('/', function(req, res) {
             equipment : equipment,
             difficulty : difficulty,
             image : image,
-            date :date,
+            date : date,
 
         }, function (err, blob) {
               if (err) {
@@ -184,7 +191,7 @@ router.route('/:id/edit')
       var equipment = req.body.equipment;
       var difficulty = req.body.difficulty;
       var image = req.body.image;
-      var date = req.body.date;
+      var updated = getDate;
 
 
 
@@ -202,7 +209,7 @@ router.route('/:id/edit')
               equipment : equipment,
               difficulty : difficulty,
               image : image,
-              date :date,
+              updated : getDate,
 
           }, function (err, blobID) {
             if (err) {
