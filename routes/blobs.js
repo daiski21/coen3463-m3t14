@@ -49,8 +49,10 @@ router.get('/', function(req, res, next) {
       res.redirect('/auth/login')
     }    
 });
-
-router.post('/', function(req, res) {
+router.post('/', function(req, res){
+  res.redirect('../blobs/')
+});
+router.post('/new', function(req, res) {
         var name = req.body.workout_name;
         var link = req.body.youtube_link;
         var steps = req.body.steps;
