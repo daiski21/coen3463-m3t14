@@ -47,19 +47,21 @@ block content
               h1.page-subhead-line
               .search
                 .col-md-6
+                
                   h1 Total Number of Workouts: 
                     span#totalCount
-                .col-md-6  
-                  form(style= 'width: 35% ; margin-left: 62%')
+                .col-md-3
+                .col-md-3  
+                  form(method= 'post', action= '/blobs', onsubmit= 'getSearch()')
                     .input-field
                       input#search(type='search', placeholder="search tutorial")
-                      label(for='search'): i.fa.fa-search.left.small.white-text |Search workout
-                      i.mdi-navigation-close.close  
+                      label.label-icon(for= 'search')
+                      i.fa.fa-search.small
           .row
             .col-md-12
               .main-box.mb-dull
                 .table-responsive
-                  table.table.table-striped.table-bordered.table-hover
+                  table.table.table-striped.table-bordered.table-hover#result
                     thead
                       tr
                         th Workout Name
