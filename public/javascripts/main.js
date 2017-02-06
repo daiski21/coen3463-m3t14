@@ -56,6 +56,12 @@ if (window.location.pathname === '/blobs/') {
 	else {
 		fetch('../api/v1/workouts?query={"name":"~(' + localStorage.getItem("search") + ')"}').then(function(res) {
 			res.json().then(function(result) {
+				if (result.length === 0) {
+					document.getElementById('totalCount').innerHTML = "No entry found related to " + 
+					localStorage.getItem("search");
+
+					document.getElementById('result').style.display = "none";
+				}
 				if (result.length === 1) {
 					document.getElementById('totalCount').innerHTML = "Found " + result.length +
 				" entry ";
