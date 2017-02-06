@@ -23,7 +23,7 @@ function getSearch() {
 
 if (window.location.pathname === '/blobs/') {
 
-	if (localStorage.getItem("search") === " ") {
+	if (localStorage.getItem("search") === 'null') {
 
 		  fetch('../api/v1/workouts?sort=date').then(function(res) {
 		    res.json().then(function(workouts) {	
@@ -56,13 +56,7 @@ if (window.location.pathname === '/blobs/') {
 	if (localStorage.getItem("search") !== 'null') {
 		fetch('../api/v1/workouts?query={"name":"~(' + localStorage.getItem("search") + ')"}').then(function(res) {
 			res.json().then(function(result) {
-				if (result.length === "0") {
-					document.getElementById('totalCount').innerHTML = "No entry found related to " + 
-					localStorage.getItem("search");
-
-					document.getElementById('result').style.display = "none";
-				}
-				else if (result.length === 1) {
+				if (result.length === 1) {
 					document.getElementById('totalCount').innerHTML = "Found " + result.length +
 				" entry ";
 				}
