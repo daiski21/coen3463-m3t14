@@ -56,7 +56,7 @@ if (window.location.pathname === '/blobs/') {
 	else {
 		fetch('../api/v1/workouts?query={"name":"~(' + localStorage.getItem("search") + ')"}').then(function(res) {
 			res.json().then(function(result) {
-				if (result.length === 0) {
+				if (result.length === null) {
 					document.getElementById('totalCount').innerHTML = "No entry found related to " + 
 					localStorage.getItem("search");
 
