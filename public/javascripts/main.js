@@ -35,7 +35,7 @@ function getSearch() {
 
 if (window.location.pathname === '/blobs/') {
 
-	if (localStorage.getItem("search") === 'null') {
+	if (localStorage.getItem("search") === 'null' || localStorage.getItem("search") === null) {
 
 		  fetch('../api/v1/workouts?sort=date').then(function(res) {
 		    res.json().then(function(workouts) {	
