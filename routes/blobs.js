@@ -23,7 +23,7 @@ router.use(methodOverride(function(req, res){
 
 router.get('/', function(req, res, next) {
     if(req.user){   
-        workouts.find().sort({date: 'descending'}).exec(function(err, blobs){
+        
           mongoose.model('workouts').find({}, function (err, blobs) {
               if (err) {
                   return console.error(err);
@@ -43,7 +43,7 @@ router.get('/', function(req, res, next) {
                 });
               }     
          });
-        })  
+        
     }
     else{
       res.redirect('/auth/login')
@@ -82,7 +82,7 @@ router.post('/new', function(req, res) {
             image : image,
             date : date,
 
-        }, function (err, blob) {
+        }, function (err, blob, count) {
               if (err) {
                   req.flash('alertMessage', 'You must fill up the name and steps input boxes. Thank you.');
                   res.redirect('/blobs/new');
@@ -213,7 +213,7 @@ router.route('/:id/edit')
               image : image,
               updated : getDate,
 
-          }, function (err, blobID) {
+          }, function (err, blobID, count) {
             if (err) {
                 res.send("There was a problem updating the information to the database: " + err);
             } 
@@ -233,29 +233,18 @@ router.route('/:id/edit')
       });
   })
 
-  .delete(function (req, res){
+  .delete(function (req, res, count){
       mongoose.model('workouts').findById(req.id, function (err, blob) {
-          if (err) {
-              return console.error(err);
-          } else {
+          
               blob.remove(function (err, blob) {
                   if (err) {
                       return console.error(err);
                   } else {
                       console.log('DELETE removing ID: ' + blob._id);
-                      res.format({
-                            html: function(){
-                                 res.redirect("/blobs/");
-                           },
-                          json: function(){
-                                 res.json({message : 'deleted',
-                                     item : blob
-                                 });
-                           }
-                        });
+                      res.send('Contact removed');
                   }
               });
-          }
+          
       });
   });
 module.exports = router;
