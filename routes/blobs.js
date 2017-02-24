@@ -5,6 +5,7 @@ var express = require('express'),
     methodOverride = require('method-override');
 
 
+
 router.use(bodyParser.urlencoded({ extended: true }))
 router.use(methodOverride(function(req, res){
       if (req.body && typeof req.body === 'object' && '_method' in req.body) {
@@ -15,8 +16,8 @@ router.use(methodOverride(function(req, res){
 }))
 
 
-router.route('/')
-    .get(function(req, res, next) {
+router.get('/', function(req, res, next) {
+    if(req.user){   
         mongoose.model('workouts').find({}, function (err, blobs) {
               if (err) {
                   return console.error(err);
@@ -24,9 +25,11 @@ router.route('/')
                   res.format({  
                     html: function(){
                         res.render('blobs/index', {
-                              title: 'All my Blobs',
-                              "blobs" : blobs
-                          });
+                              user: req.user,
+                              title: 'All my workouts',
+                              "blobs" : blobs,
+                              alertMessage: req.flash('alertMessage')
+                        });
                     },
                     json: function(){
                         res.json(blobs);
@@ -34,9 +37,13 @@ router.route('/')
                 });
               }     
         });
-    })
+    }
+    else{
+      res.redirect('/auth/login')
+    }    
+});
 
-    .post(function(req, res) {
+router.post('/', function(req, res) {
         var name = req.body.workout_name;
         var link = req.body.youtube_link;
         var steps = req.body.steps;
@@ -67,7 +74,9 @@ router.route('/')
 
         }, function (err, blob) {
               if (err) {
-                  res.send("There was a problem adding the information to the database.");
+                  req.flash('alertMessage', 'You must fill up the name and steps input boxes. Thank you.');
+                  res.redirect('/blobs/new');
+                  //res.send("/blobs");
               } else {
                   console.log('POST creating new blob: ' + blob);
                   res.format({   
@@ -81,11 +90,16 @@ router.route('/')
                 });
               }
         })
-    });
+});
 
 
 router.get('/new', function(req, res) {
-    res.render('blobs/new', { title: 'Add New Blob' });
+  if(req.user){  
+    res.render('blobs/new', { user: req.user, title: 'Add New Blob' , alertMessage: req.flash('alertMessage')});
+  }
+  else{
+    res.redirect('/auth/login')
+  } 
 });
 
 
@@ -144,6 +158,7 @@ router.route('/:id/edit')
               res.format({
                   html: function(){
                          res.render('blobs/edit', {
+                            user: req.user,
                             title: 'Blob' + blob._id,
                             "blob" : blob
                         });

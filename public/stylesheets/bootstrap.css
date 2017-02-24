@@ -1099,6 +1099,11 @@ h6,
 .h6 {
   font-size: 12px;
 }
+h4.alertMesage{
+ color: maroon;
+
+
+}
 p {
   margin: 0 0 10px;
 }
@@ -2312,7 +2317,13 @@ label {
   display: inline-block;
   max-width: 100%;
   margin-bottom: 5px;
-  font-weight: bold;
+  color: white;
+}
+span.req{
+  color: red;
+}
+span.req2{
+  font-size: 11px;
 }
 input[type="search"] {
   -webkit-box-sizing: border-box;
@@ -2418,6 +2429,12 @@ input[type="month"].input-lg {
 }
 .form-group {
   margin-bottom: 15px;
+}
+.form-alert{
+  background-color: pink;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: center;
 }
 .radio,
 .checkbox {
